@@ -11,6 +11,10 @@
                 <label for="name" class="block font-semibold mb-1">Name:</label>
                 <input type="text" name="name" id="name" class="w-full p-2 border rounded-md" value="{{ $userType->name }}">
             </div>
+            <div class="mb-4">
+                <label for="description" class="block font-semibold mb-1">Name:</label>
+                <input type="text" name="description" id="description" class="w-full p-2 border rounded-md" value="{{ $userType->description }}">
+            </div>
             <button type="submit" class="bg-blue-900 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Update User Type</button>
         </form>
     </div>

@@ -13,6 +13,7 @@
                 <tr>
                     <th class="py-2 px-4 bg-gray-200 text-left">ID</th>
                     <th class="py-2 px-4 bg-gray-200 text-left">Name</th>
+                    <th class="py-2 px-4 bg-gray-200 text-left">Description</th>
                     <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                     <tr>
                         <td class="py-2 px-4">{{ $userType->id }}</td>
                         <td class="py-2 px-4">{{ $userType->name }}</td>
+                        <td class="py-2 px-4">{{ $userType->description }}</td>
                         <td class="py-2 px-4">
                             <a href="{{ route('user-types.edit', $userType) }}" class="text-blue-500 hover:underline mr-2">
                                 Edit

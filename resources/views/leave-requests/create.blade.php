@@ -34,6 +34,13 @@
                 <label for="reason" class="block font-semibold mb-1">Reason:</label>
                 <textarea name="reason" id="reason" class="w-full p-2 border rounded-md"></textarea>
             </div>
+            <div class="mb-4">
+                <label for="status" class="block font-semibold mb-1">Status:</label>
+                <select name="status" id="status" class="w-full p-2 border rounded-md">
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Create Leave Request</button>
         </form>
     </div>

@@ -13,8 +13,6 @@ class UserTypeController extends Controller
         return view('user-types.index', compact('userTypes'));
     }
 
-    // Add other methods (create, store, edit, update, destroy) as needed
-
     public function create()
     {
         return view('user-types.create');
@@ -24,6 +22,7 @@ class UserTypeController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:user_types',
+            'description' => 'required'
         ]);
 
         UserType::create($request->all());
@@ -41,6 +40,7 @@ class UserTypeController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:user_types,name,' . $userType->id,
+            'description' => 'required'
         ]);
 
         $userType->update($request->all());

@@ -20,5 +20,53 @@ class EmployeeController extends Controller
         return view('employees.create', compact('userTypes'));
     }
 
-    // Add other methods (store, show, edit, update, destroy) as needed
+    public function store(Request $request)
+    {
+        $request->validate([
+            'user_type_id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'leave_balance' => 'required',
+        ]);
+
+        Employee::create($request->all());
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee created successfully.');
+    }
+
+    public function show(Employee $employee)
+    {
+        return view('employees.show', compact('employee'));
+    }
+
+    public function edit(Employee $employee)
+    {
+        $userTypes = UserType::all();
+        return view('employees.edit', compact('employee', 'userTypes'));
+    }
+
+    public function update(Request $request, Employee $employee)
+    {
+        $request->validate([
+            'user_type_id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'leave_balance' => 'required',
+        ]);
+
+        $employee->update($request->all());
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee updated successfully');
+    }
+
+    public function destroy(Employee $employee)
+    {
+        $employee->delete();
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee deleted successfully');
+    }
+
 }

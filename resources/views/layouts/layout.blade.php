@@ -25,7 +25,9 @@
                 <li><a href="{{ route('employees.index') }}">Employees</a></li>
                 <li><a href="{{ route('leave-requests.index') }}">Leave Requests</a></li>
                 <li>
-                    <a href="{{ route('logout') }}"
+                    <a
+                    href="{{ route('logout') }}"
+                    class="bg-white text-blue-900 px-3 py-1 rounded font-semibold"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         Logout
@@ -38,14 +40,15 @@
             </ul>
         </div>
     </nav>
-
     <div class="container mx-auto mt-6">
         @yield('content')
     </div>
 
     <footer class="bg-gray-900 p-4 text-white mt-6">
         <div class="container mx-auto">
-            <p class="text-center">@ Payroll Management Software</p>
+            <p class="text-center">
+                @ Payroll Management Software
+            </p>
         </div>
     </footer>
 

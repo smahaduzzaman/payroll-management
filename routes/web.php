@@ -6,6 +6,7 @@ use App\Http\Controllers\UserTypeController;
 use App\Http\Controllers\LeaveCategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeaveRequestController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,15 @@ use App\Http\Controllers\LeaveRequestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('layouts.layout');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/send-mail', [MailController::class, 'sendMail'])->name('send-mail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,5 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('employees', EmployeeController::class);
     Route::resource('leave-requests', LeaveRequestController::class);
 });
+
+Route::middleware(['auth', 'manager'])->group(function () {
+    Route::put('/leave-requests/{leaveRequest}/approve', [LeaveRequestController::class, 'approve'])->name('leave-requests.approve');
+    Route::put('/leave-requests/{leaveRequest}/reject', [LeaveRequestController::class, 'reject'])->name('leave-requests.reject');
+});
+
 
 require __DIR__.'/auth.php';
